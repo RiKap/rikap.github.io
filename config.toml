@@ -1,0 +1,6 @@
+baseURL = "https://richardkapicka.cz"
+languageCode = "en-US"
+title = "Richard Kapička"
+enableGitInfo = true
+disableKinds = ["taxonomyTerm"]
+disableHugoGeneratorInject = true

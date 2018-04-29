@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
-var order = require("gulp-order");
+var order = require('gulp-order');
 var concat = require('gulp-concat');
 var minifyCss = require('gulp-clean-css');
 var minifyHtml = require('gulp-htmlmin');

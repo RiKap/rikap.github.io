@@ -1,4 +1,5 @@
 let gulp = require('gulp');
+let exec = require('child_process').exec;
 let watch = require('gulp-watch');
 let concat = require('gulp-concat');
 let less = require('gulp-less');
@@ -25,6 +26,13 @@ gulp.task('html', function() {
 	return gulp.src('./public/*.html')
 		.pipe(minifyHtml({collapseWhitespace: true}))
 		.pipe(gulp.dest('./public'));
+});
+
+gulp.task('build', function() {
+	gulp.start('css');
+	gulp.start('js');
+	exec('hugo');
+	gulp.start('html');
 });
 
 gulp.task('watch', function() {

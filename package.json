@@ -1,5 +1,7 @@
 {
-	"dependencies": {},
+	"dependencies": {
+		"normalize.css": "^8.0.0"
+	},
 	"devDependencies": {
 		"gulp": "^3.9.0",
 		"gulp-clean-css": "^3.9.0",

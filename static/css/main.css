@@ -76,6 +76,38 @@ h3 a {
 	font-size: 1.3em;
 }
 
+.wrapper.error {
+
+}
+
+.wrapper.error h1 {
+	font-size: 9.375em;
+	line-height: 150px;
+	padding-bottom: 40px;
+}
+
+.wrapper.error h2 {
+	font-size: 1.875em;
+	padding-bottom: 40px;
+}
+
+.wrapper.error .back a {
+	font-size: 1.250em;
+	display: inline-block;
+	font-weight: bold;
+	color: #3f3f3f;
+}
+
+.wrapper.error .back a:hover {
+	border-bottom: transparent;
+	-webkit-animation-name: shake;
+	animation-name: shake;
+	-webkit-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
 .sites {
 	margin-top: 15px;
 }

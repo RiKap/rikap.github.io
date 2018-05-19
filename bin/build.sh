@@ -29,12 +29,13 @@ rm -rf public/*
 
 echo "Generating site"
 npm install
-npm run css && npm run js
+npm run css
+npm run js
 hugo
 npm run html
 echo "richardkapicka.cz" > public/CNAME
-echo "*.css" > public/css/.gitignore
-echo "*.js" > public/js/.gitignore
+echo "/css/*" >> public/.gitignore
+echo "/js/*" >> public/.gitignore
 
 echo "Updating master branch"
 cd public

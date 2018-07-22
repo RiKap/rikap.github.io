@@ -1,41 +1,53 @@
 let gulp = require('gulp');
 let exec = require('child_process').exec;
-let watch = require('gulp-watch');
-let concat = require('gulp-concat');
-let less = require('gulp-less');
-let minifyCss = require('gulp-clean-css');
-let minifyHtml = require('gulp-htmlmin');
-let minifyJs = require('gulp-uglify');
+let gultpConcat = require('gulp-concat');
+let gultpLess = require('gulp-less');
+let gultpMinifyCss = require('gulp-clean-css');
+let gultpMinifyHtml = require('gulp-htmlmin');
+let gultpMinifyJs = require('gulp-uglify');
 
-gulp.task('css', function() {
-	return gulp.src('./static/css/main.less')
-		.pipe(less())
-		.pipe(minifyCss({compatibility: 'ie8'}))
-		.pipe(concat('bundle.css'))
-		.pipe(gulp.dest('./static/webtemp'));
-});
+let paths = {
+	css: {
+		src: './static/css/**/*.less',
+		dest: './static/webtemp',
+	},
+	js: {
+		src: './static/js/**/*.js',
+		dest: './static/webtemp',
+	},
+	html: {
+		src: './public/**/*.html',
+		dest: './public',
+	},
+};
 
-gulp.task('js', function () {
-	return gulp.src('./static/js/**/*.js')
-		.pipe(minifyJs())
-		.pipe(concat('bundle.js'))
-		.pipe(gulp.dest('./static/webtemp'));
-});
+function css() {
+	return gulp.src(paths.css.src)
+		.pipe(gultpLess())
+		.pipe(gultpMinifyCss({compatibility: 'ie8'}))
+		.pipe(gultpConcat('bundle.css'))
+		.pipe(gulp.dest(paths.css.dest));
+}
 
-gulp.task('html', function() {
-	return gulp.src('./public/*.html')
-		.pipe(minifyHtml({collapseWhitespace: true}))
-		.pipe(gulp.dest('./public'));
-});
+function js() {
+	return gulp.src(paths.js.src)
+		.pipe(gultpMinifyJs())
+		.pipe(gultpConcat('bundle.js'))
+		.pipe(gulp.dest(paths.js.dest));
+}
 
-gulp.task('build', function() {
-	gulp.start('css');
-	gulp.start('js');
-	exec('hugo');
-	gulp.start('html');
-});
+function html() {
+	return gulp.src(paths.html.src)
+		.pipe(gultpMinifyHtml({collapseWhitespace: true}))
+		.pipe(gulp.dest(paths.html.dest));
+}
 
-gulp.task('watch', function() {
-	gulp.watch(['./static/css/**/*.less'], ['css']);
-	gulp.watch(['./static/js/**/*.js'], ['js']);
-});
+function watch() {
+	gulp.watch(paths.css.src, css);
+	gulp.watch(paths.js.src, js);
+}
+
+gulp.task('css', css);
+gulp.task('js', js);
+gulp.task('html', html);
+gulp.task('watch', watch);

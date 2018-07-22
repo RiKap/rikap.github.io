@@ -15,7 +15,6 @@
 		"css": "gulp css",
 		"js": "gulp js",
 		"html": "gulp html",
-		"build": "gulp build",
 		"watch": "gulp watch"
 	}
 }

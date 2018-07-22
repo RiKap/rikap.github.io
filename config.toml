@@ -4,3 +4,4 @@ title = "Richard Kapička"
 enableGitInfo = true
 disableKinds = ["taxonomyTerm"]
 disableHugoGeneratorInject = true
+enableEmoji = true

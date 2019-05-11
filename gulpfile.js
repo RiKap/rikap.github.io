@@ -1,5 +1,4 @@
 let gulp = require('gulp');
-let exec = require('child_process').exec;
 let gultpConcat = require('gulp-concat');
 let gultpLess = require('gulp-less');
 let gultpMinifyCss = require('gulp-clean-css');
